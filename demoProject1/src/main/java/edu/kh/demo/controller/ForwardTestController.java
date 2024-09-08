@@ -90,7 +90,9 @@ public class ForwardTestController {
 		 *  forward할 html 파일의 경로 형태가 된다!!!!
 		 */
 		
+		
 		// classpath:/templates/forward.html
+		
 		return "forward";
 		
 	}

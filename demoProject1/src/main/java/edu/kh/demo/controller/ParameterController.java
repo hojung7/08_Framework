@@ -79,7 +79,7 @@ public class ParameterController {
 		return "param/result1";
 		
 		// forward란??
-		// - 클라이언트에 요처에 대한 응답 처리를
+		// - 클라이언트에 요청에 대한 응답 처리를
 		// 대신 해달라고 넘기는 것(요청 위임)
 		
 		// - 위임 시 HttpServletRequest, HttpServletResponse를
