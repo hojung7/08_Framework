@@ -56,7 +56,7 @@ public class ParameterController {
 	public String test1(HttpServletRequest req) {
 		
 			// 매개 변수 HttpServletRequest req 사용 가능할까??
-			// -> 가능 !!
+			// -> 가능 !!!!
 			// 왜? Spring의 ArgumentResolver 때문에 가능
 		// ArgumentResolver(전달 인자 해결사)
 		// -> Controller 메서드에 작성된 
