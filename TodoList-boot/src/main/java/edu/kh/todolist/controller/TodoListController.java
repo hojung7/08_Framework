@@ -130,26 +130,27 @@ public class TodoListController {
 	 * }
 	 */
 
-	/** 할 일 수정
+	/**
+	 * 할 일 수정
+	 * 
 	 * @param ra
 	 * @param todo : todoTitle, todoDetail, todoNo가 담긴 커맨드 객체
 	 * @return
 	 */
 	@PostMapping("update")
 	public String todoUpdate(
-			
-//			  @RequestParam("todoTitle") String title,
-//			  
-//			  @RequestParam("todoDetail") String detail,
-//			  
-//			  @RequestParam("todoNo") String no,
-			 
-			RedirectAttributes ra,
-			@ModelAttribute Todo todo
+
+//              @RequestParam("todoTitle") String title,
+//              
+//              @RequestParam("todoDetail") String detail,
+//              
+//              @RequestParam("todoNo") String no,
+
+			RedirectAttributes ra, @ModelAttribute Todo todo
 
 	) {
 
-//		int result = service.todoUpdate(title, detail, no);
+//        int result = service.todoUpdate(title, detail, no);
 		int result = service.todoUpdate(todo);
 		String message = null;
 		String path = null;
@@ -167,23 +168,22 @@ public class TodoListController {
 		return path;
 
 	}
-	
-	/** 할 일 삭제
+
+	/**
+	 * 할 일 삭제
+	 * 
 	 * @param todoNo
 	 * @param ra
 	 * @return
 	 */
 	@GetMapping("delete")
-	public String todoDelete(
-					@RequestParam("todoNo") int todoNo,
-					RedirectAttributes ra
-			) {
+	public String todoDelete(@RequestParam("todoNo") int todoNo, RedirectAttributes ra) {
 		int result = service.todoDelete(todoNo);
-		
+
 		String message = null;
 		String path = null;
-		
-		if(result > 0 ) {
+
+		if (result > 0) {
 			message = "삭제되었습니다";
 			path = "redirect:/"; // 메인 페이지
 		} else {
@@ -192,5 +192,5 @@ public class TodoListController {
 		}
 		ra.addFlashAttribute("message", message);
 		return path;
-}
+	}
 }
