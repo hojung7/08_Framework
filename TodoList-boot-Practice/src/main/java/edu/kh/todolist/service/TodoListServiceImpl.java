@@ -26,56 +26,19 @@ public class TodoListServiceImpl implements TodoListService {
 		 List<Todo> todoList = mapper.selectTodoList();
 		 
 		 // 2) 완료된 할 일 개수 조회
-		 int completeCount = mapper.selectCompleteCount();
+	//	 int completeCount = mapper.selectCompleteCount();
 		 
 		 // 3) Map 객체 생성 후 조회 결과 담기
 		 Map<String, Object> map = new HashMap<>();
 		 
 		 map.put("todoList", todoList);
-		 map.put("completeCount", completeCount);
+	//	 map.put("completeCount", completeCount);
 		 
 		 // 4) Map 객체 반환
 		return map;
 	}
 
-	// 할 일 추가
-	@Override
-	public int todoAdd(Todo todo) {
-		
-		return mapper.todoAdd(todo);
-	}
-
-	// 할 일 상세 조회
-	@Override
-	public Todo todoDetail(int todoNo) {
-
-		return mapper.todoDetail(todoNo);
-	}
-
-	// 완료 여부 변경
-	@Override
-	public int todoComplete(int todoNo) {
-		
-		return mapper.todoComplete(todoNo);
-	}
-
-	@Override
-	public int todoUpdate(Todo todo) {
-
-		return mapper.todoUpdate( todo);
-	}
-
-	// 할 일 삭제
-	@Override
-	public int todoDelete(int todoNo) {
-	
-		return mapper.todoDelete(todoNo);
-	}
-
-	
-
-	}
-
+}	
 
 
 
