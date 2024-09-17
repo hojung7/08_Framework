@@ -39,6 +39,7 @@ public class DBconfig {
 	// - @Bean 어노테이션이 작성된 메서드에서 반환된 객체는
 	// Spring Container가 관리함(IOC)
 
+	
 	@Bean
 	// @ConfigurationProperties(prefix = "spring.datasource.hikari")
 	// properties 파일의 내용을 이용해서 생성되는 bean을 설정하는 어노테이션
