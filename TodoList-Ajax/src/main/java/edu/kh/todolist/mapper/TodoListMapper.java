@@ -15,6 +15,11 @@ public interface TodoListMapper {
 	 */
 	List<Todo> selectTodoList();
 
+	/** 할 일 목록 조회
+	 * @return
+	 
+	List<Todo> selectTodoList();@*/
+
 	/** 완료된 할 일 개수 조회
 	 * @return completeCount
 	 */
