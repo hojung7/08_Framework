@@ -71,7 +71,7 @@ public class MemberServiceImpl implements MemberService{
 //				encoder.matches(memberPw, loginMember.getMemberPw()));
 		
 		// 입력 받은 비밀번호와 DB에서 조회된 비밀번호가 일치하지 않을 때
-		if(encoder.matches(memberPw, loginMember.getMemberPw())){
+		if(!encoder.matches(memberPw, loginMember.getMemberPw())){
 			return null;
 		}
 		// 4. 로그인 결과 반환
