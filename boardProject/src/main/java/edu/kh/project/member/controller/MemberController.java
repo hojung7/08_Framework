@@ -187,7 +187,7 @@ public class MemberController {
 	 * @return
 	 */
 @ResponseBody // 반환 값을 응답 본문(ajax 코드)로 반환
-@GetMapping("checkNickname")
+@GetMapping("nicknameCheck")
 	public int checkNickname(
 			@RequestParam("nickname") String nickname) {
 	return service.checkNickname(nickname);
