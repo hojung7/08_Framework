@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.member.dto.Member;
@@ -220,7 +221,7 @@ public class MyPageController {
 	
 		return "redirect:" + path;
 	}
-}
+
 
 /*
  * @RequestParam
@@ -236,5 +237,49 @@ public class MyPageController {
  * - 비동기 요청 코드(응답 본문)에 컨트롤러 반환 값을 그대로 전달하는 어노테이션
  */
 
+/** 프로필 수정 페이지 전환
+ * @return
+ */
+@GetMapping("profile")
+public String profile() {
+	return "myPage/myPage-profile";
+}
 
+/** 로그인한 회원의 프로필 이미지 수정
+ * @param profileImg : 제출된 이미지
+ * @param loginMember : 로그인한 회원 정보
+ * @param ra :ㅣ 리다이렉트 시 request scope로 값 전달
+ * @return
+ */
+
+@PostMapping("profile")
+public String profile(
+		@RequestParam("profileImg") MultipartFile profileImg,
+		@SessionAttribute("loginMember") Member loginMember,
+		RedirectAttributes ra
+		
+		) {
+	
+	// 1) 로그인한 회원의 회원 번호 얻어오기
+	int memberNo = loginMember.getMemberNo();
+	
+	// 2) 업로드된 이미지로 프로필 이미지 변경하는 서비스 호출
+	String filePath = service.profile(profileImg, memberNo);
+	
+	// 3) 응답 처리
+	String message = null;
+
+		message = "프로필 이미지가 변경되었습니다";
+		
+		// DB, Session에 저장된 프로필 이미지 정보 동기화
+		loginMember.setProfileImg(filePath);
+
+	ra.addFlashAttribute("message", message);
+	
+	return "redirect:profile"; // /myPage/profile(GET)
+	
+}
+
+
+}
 
