@@ -21,7 +21,7 @@ import com.zaxxer.hikari.HikariDataSource;
  *   내부에 작성된 메서드를 모두 실행하게함
  * 
  * @Bean 어노테이션
- * - 메서드 수행 결과로 반환 객체들을 bean으로 등록함
+ * - 메서드 수행 결과로 반환 객체들을 bean으로 등록함!!
  *  + 메서드 내부 코드 == bean 설정 코드
  *  
  * @PropertySource :  properties 파일의 내용을 이용하겠다는 어노테이션

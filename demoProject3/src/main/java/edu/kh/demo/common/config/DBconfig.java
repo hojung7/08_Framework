@@ -55,7 +55,7 @@ public class DBconfig {
 	}
 
 	////////////////////////////Mybatis 설정 추가 ////////////////////////////
-	//SqlSession : DB연결 + SQL파일 위치 등록
+	//SqlSession : DB연결 + SQL파일 위치 등록!!
 	//										+ 마이바티스 설정 적용 + 클래스 별칭 등록
 	// SqlSessionFactory : SqlSession을 만드는 객체 
 	@Bean
