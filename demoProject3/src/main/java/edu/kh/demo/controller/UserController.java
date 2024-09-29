@@ -27,6 +27,8 @@ public class UserController {
 	// 서비스 객체 DI(의존성 주입)
 	@Autowired
 	private UserService service;
+	 
+	
 	
 	
 	/** 사용자 번호를 입력 받아 일치하는 사용자의 이름 조회
