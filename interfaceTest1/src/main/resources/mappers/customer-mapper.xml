@@ -6,5 +6,7 @@
     INSERT INTO CUSTOMER
     VALUES(SEQ_CUSTOMER_NO.NEXTVAL, #{customerName}, #{customerTel}, #{customerAddress})
   </insert>
+
+
   
 </mapper>
