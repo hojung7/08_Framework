@@ -1,6 +1,5 @@
 package com.kh.test.controller;
 
-import java.awt.print.Book;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,21 +8,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kh.test.service.BookService;
+import com.kh.test.dto.Student;
+import com.kh.test.service.StudentService;
 
 import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("book")
-public class BookController {
+@RequestMapping("student")
+public class StudentController {
 	
-@Autowired
-	private  BookService service;
+	@Autowired
+	private  StudentService service;
 	
 	@ResponseBody
 	@GetMapping("selectAllList")
-	public List<Book> selectAllList() {
+	public List<Student> selectAllList() {
 		return service.selectAllList();
 	}
 	
