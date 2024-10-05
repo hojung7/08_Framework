@@ -85,7 +85,7 @@ public int resetPw(
  * @param memberNo
  * @return
  */
-@ResponseBody
+@ResponseBody // 반환 값을 응답 본문(ajax 코드)로 반환
 @PutMapping("changeStatus")
 public int changeStatus(
 		@RequestBody int memberNo) {
