@@ -25,8 +25,8 @@ public class MainController {
 	
 	  private final MainService service; // 서비스 의존성 주입(DI) 되어있음
 	
-	@RequestMapping("/")
-	public String mainPage() {  // "/" 요청 매핑(method 가리지 않음)
+	@RequestMapping("/")// "/" 요청 매핑(method 가리지 않음)
+	public String mainPage() {  
 		
 		// 접두사 : classpath: /templates/
 		// 접미사 : .html
