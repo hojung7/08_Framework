@@ -54,11 +54,8 @@
 	
   </resultMap>
   
-  
-  
-  
-  
-  
+ 
+
   
   <!--  boardCode가 일치하는 게시글 중 삭제되지 않은 게시글 수 조회 -->
   <select id="getListCount" resultType="_int">
@@ -244,4 +241,6 @@
   	ORDER BY BOARD_CODE ASC
   
   </select>
+  
+
 </mapper>
