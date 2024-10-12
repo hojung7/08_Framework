@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /* [Interceptor]
  * 
+ * - 기본 흐름 : Client <-> Dispatcher Servlet <-> Controller...
  * - 요청/응답을 가로채는 객체 (Spring 지원)
  * 
  * Client <-> Filter <-> Dispatcher Servlet 
@@ -22,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
  * 
  * 
  * - HandlerInterceptor 인터페이스 상속 필요
+ * (interface 상속 시 implements)
  * 
  * - 제공 메서드 중 필요한 메서드 오버라이딩
  * 
