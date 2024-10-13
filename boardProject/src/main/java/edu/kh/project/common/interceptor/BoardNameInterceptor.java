@@ -12,6 +12,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class BoardNameInterceptor implements HandlerInterceptor {
 	
+	// BoardNameInterceptor는 class이므로 혼자서 코드를 수행할 수 X 
+	// -> 객체를 만들어서 사용해야 함으로 config에 Bean 등록
+	
 	// 후처리
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
@@ -31,6 +34,8 @@ public class BoardNameInterceptor implements HandlerInterceptor {
 		// 2) "/board", "/editBoard"로 시작하는 요청 중
 		//    {boardCode} 부분인 2번째 코드 값 얻어오기
 		
+		// URL : http://localhost/editBoard/1/insert
+		
 		// Uniform Resource Identifier(URI) : 통합 자원 식별자
 		// - 자원 이름(주소)만 봐도 무엇인지 구별할 수 있는 문자열
 		// ex)  /editBoard/1/insert
@@ -38,7 +43,9 @@ public class BoardNameInterceptor implements HandlerInterceptor {
 		String uri = request.getRequestURI();
 		
 		try {
-				String code = uri.split("/")[2]; // boardCode만 잘라내기
+			 // "" | editBoard | 1 | insert -> 이렇게 쪼개짐
+			 // (0)    (1)      (2)   (3)
+				String code = uri.split("/")[2]; // boardCode만 잘라내기 
 				
 				// boardTypeList에서 boardCode가 같은 경우의 boardName 찾기
 				for(Map<String, String> boardType :boardTypeList) {
