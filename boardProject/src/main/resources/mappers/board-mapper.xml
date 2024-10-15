@@ -241,6 +241,11 @@
   
   
   
+<!--   SELECT 구문 수행 시 key를 나타내는 컬럼명이
+   "언더스코어 표기법"으로 작성되어 Map에 그대로 세팅 되었는데
+index.html에서 Map에 저장된 값을 얻어올 때 
+key를 "카멜 표기법" 형태로 작성되어 값을 읽어오지 못하는 문제 발생 -->
+
   <!-- DB에서 모든 게시판 종류를 조회 -->
   <select id="selectBoardTypeList" resultType="map">
   	SELECT 
@@ -384,6 +389,54 @@
   
   </select>
   
+  
+<!-- 현재 게시글이 속해있는 페이지 번호 조회 -->
+  <select id="getCurrentPage" resultType="_int">
+  	SELECT CEIL(RNUM/#{limit}) CP
+	FROM
+		(SELECT 
+			ROW_NUMBER() OVER(ORDER BY BOARD_NO DESC) RNUM
+			,BOARD_NO
+		FROM "BOARD"
+		
+		<!-- 작성자 검색인 경우 -->
+		<if test='key == "w"'>
+			JOIN "MEMBER" USING(MEMBER_NO)
+		</if>
+		
+		WHERE BOARD_CODE = #{boardCode}
+		AND   BOARD_DEL_FL = 'N'
+		
+		<choose>
+			<!-- 제목 검색인 경우 -->
+			<when test='key == "t"'>
+				AND BOARD_TITLE LIKE '%' || #{query} || '%'
+			</when>
+			
+			<!-- 내용 검색인 경우 -->
+			<when test='key == "c"'>
+				AND BOARD_CONTENT LIKE '%' || #{query} || '%'
+			</when>
+			
+			<!-- 제목 + 내용 검색인 경우 -->
+			<when test='key == "tc"'>
+				AND (
+					BOARD_TITLE LIKE '%' || #{query} || '%'
+				 	OR 
+				 	BOARD_CONTENT LIKE '%' || #{query} || '%'
+				)
+			</when>
+			
+			<!-- 작성자 검색인 경우 -->
+			<when test='key == "w"'>
+				AND MEMBER_NICKNAME LIKE '%' || #{query} || '%'
+			</when>
+		</choose>
+		
+		
+		)
+	WHERE BOARD_NO = #{boardNo}
+  </select>
   
   
   
