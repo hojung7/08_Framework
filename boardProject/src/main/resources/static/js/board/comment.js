@@ -58,29 +58,63 @@ const insertComment = (parentCommentNo) => {
       document.querySelector(".child-comment-content").value;
   }
 
-  // Ajax
-  fetch("/comment", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data) // JS 객체 -> JSON (문자열)
+ // Ajax
+ fetch("/comment", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(data) // JS 객체 -> JSON (문자열)
+})
+  .then(response => {
+    if (response.ok) return response.text();
+    throw new Error("댓글 등록 실패");
   })
-    .then(response => {
-      if (response.ok) return response.text();
-      throw new Error("댓글 등록 실패");
-    })
-    .then(commentNo => {
+  .then(commentNo => {
 
-      if (commentNo == 0) { // 등록 실패
-        alert("댓글 등록 실패");
-        return;
-      }
+    if (commentNo == 0) { // 등록 실패
+      alert("댓글 등록 실패");
+      return;
+    }
 
-      alert("댓글이 등록 되었습니다.");
-      commentContent.value = ""; // textarea에 작성한 댓글 내용 삭제
-      selectCommentList(); // 댓글 목록 비동기 조회 후 출력
+    alert("댓글이 등록 되었습니다.");
+    commentContent.value = ""; // textarea에 작성한 댓글 내용 삭제
+    selectCommentList(); // 댓글 목록 비동기 조회 후 출력
 
-    })
-    .catch(err => console.error(err));
+    // 알림 클릭 시 이동하는 url에 ?cn=댓글번호 추가
+    // -> 알림 클릭 시 작성된 댓글 또는 답글 위치로 바로 이동
+
+
+    // 댓글을 작성한 경우
+    // -> {닉네임}님이 {게시글 제목} 게시글에 댓글을 작성했습니다
+    if(parentCommentNo === undefined){
+      const content
+        = `<strong>${memberNickname}</strong>님이 <strong>${boardDetail.boardTitle}</strong> 게시글에 댓글을 작성했습니다`;
+
+      // type, url, pkNo, content
+      sendNotification(
+        "insertComment",
+        `${location.pathname}?cn=${commentNo}`,
+        boardDetail.boardNo,
+        content
+      );
+    }
+
+    // 답글(대댓글)을 작성한 경우
+    // -> {닉네임}님이 답글을 작성했습니다
+    else{
+      const content
+      = `<strong>${memberNickname}</strong>님이 답글을 작성했습니다`;
+
+      // type, url, pkNo, content
+      sendNotification(
+        "insertChildComment",
+        `${location.pathname}?cn=${commentNo}`,
+        parentCommentNo,
+        content
+      );
+    }
+
+  })
+  .catch(err => console.error(err));
 }
 
 
