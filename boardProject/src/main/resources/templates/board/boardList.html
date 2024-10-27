@@ -58,6 +58,7 @@
               <tr th:each="board : ${boardList}" 
                   th:object="${board}">
 
+
                 <td th:text="*{rnum}">게시글 번호</td>
 
                 <td>
@@ -161,6 +162,7 @@
         <input type="text" name="query" id="searchQuery" placeholder="검색어를 입력해주세요.">
 
         <button>검색</button>
+        <!-- 검색 버튼 누를 시 제출되는 값 : key, query -->
       </form>
 
     </section>
