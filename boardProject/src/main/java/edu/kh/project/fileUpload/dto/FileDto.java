@@ -19,6 +19,7 @@ public class FileDto {
 	private String fileRename;
 	private String filePath;
 	private String updateDate;
+	
 }
 
 

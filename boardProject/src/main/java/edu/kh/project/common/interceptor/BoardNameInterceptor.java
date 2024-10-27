@@ -21,7 +21,8 @@ public class BoardNameInterceptor implements HandlerInterceptor {
 			ModelAndView modelAndView) throws Exception {
 		
 		/* 게시판 관련된 요청/응답을 가로채서
-		 * 현재 어떤 게시판을 조회/삽입/수정하려는지 알 수 있게
+		 * 현재 어떤 게시판을 조회/삽입/수정하려는지 알 
+		 * 수 있게
 		 * 게시판 이름 끼워 넣기
 		 * 	 */
 		

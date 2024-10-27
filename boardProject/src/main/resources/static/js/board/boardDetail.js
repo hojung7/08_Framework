@@ -32,6 +32,19 @@ boardLike.addEventListener("click", e => {
     if(result.check === 'insert'){
     boardLike.classList.add("fa-solid");
     boardLike.classList.remove("fa-regular");
+
+    // 게시글 작성자에게 알림 보내기
+    const content
+      = `<strong>${memberNickname}</strong>${boardDetail.boardTitle}</strong>게시글을 좋아합니다`;
+
+    // type, url, pkNo, content
+    sendNotification(
+      "boardLike",
+      location.pathname,  // 게시글 상세 조회 페이지 주소
+      boardDetail.boardNo,
+      content
+    )
+
     }else{ // 비우기
       boardLike.classList.add("fa-regular");
       boardLike.classList.remove("fa-solid");
@@ -115,6 +128,44 @@ updateBtn?.addEventListener("click", () => {
 
 })
 
+
+//--------------------------------------------------
+
+
+/* 목록으로 버튼 클릭 시 */
+const goToListBtn = document.querySelector("#goToListBtn");
+
+goToListBtn.addEventListener("click", () => {
+
+  // 페이지당 게시글 수
+  const limit = 10;
+
+  let url
+    = location.pathname + "/goToList?limit=" + limit;
+  // /board/{boardCode}/{boardNo}/goToList?limit=10
+
+  // location.search : 쿼리스트링 반환
+  // URLSearchParams 객체 : 쿼리스트링 관리하는 객체
+  const params = new URLSearchParams(location.search);
+
+  // 쿼리스트링에 key가 존재하는 경우 == 검색인 경우
+  if(params.get("key") !== null){
+    url += `&key=${params.get("key")}&query=${params.get("query")}`;
+  }
+  // `` : 스트링 템플릿
+
+  location.href = url;
+    // /board/{boardCode}/{boardNo}/goToList
+    // (검색 X) ? limit = 10
+    // (검색 O) ? limit=10&key=t&query=검색어
+
+  //
+
+
+  
+
+
+})
 
 
 

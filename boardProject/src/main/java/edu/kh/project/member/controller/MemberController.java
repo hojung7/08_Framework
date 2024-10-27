@@ -47,7 +47,7 @@ public class MemberController {
 		Model model,
 		HttpServletResponse resp
 		) {
-		
+		 
 //		log.debug("memberEmail : {}", memberEmail);
 //		log.debug("memberPw : {}", memberPw);
 		

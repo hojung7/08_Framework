@@ -176,6 +176,13 @@ public class BoardServiceImpl implements BoardService{
 		
 		return map;
 	}
+
+	// 현재 게시글이 포함도니 목록의 페이지로 리다이렉트
+	@Override
+	public int getCurrentPage(Map<String, Object> paramMap) {
+
+		return mapper.getCurrentPage(paramMap);
+	}
 	
 	
 }
