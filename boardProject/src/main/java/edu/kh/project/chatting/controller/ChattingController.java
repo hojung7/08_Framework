@@ -28,7 +28,7 @@ public class ChattingController {
   
   private final ChattingService service;
 
-  //   /chatting
+  //chatting
   /**
    * 채팅 페이지 전환
    * @return
