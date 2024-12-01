@@ -103,6 +103,7 @@ public class SseController {
 	@GetMapping("notification")
 	public List<Notification> selectNotificationList(@SessionAttribute("loginMember") Member loginMember) {
 		int memberNo = loginMember.getMemberNo();
+//		int memberNo = loginMember.getMemberNo();
 		return service.selectNotificationList(memberNo);
 	}
 
