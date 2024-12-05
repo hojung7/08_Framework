@@ -59,7 +59,20 @@ public class BoardController {
 		log.debug("paramMap : {}", paramMap);
 		
 		Map<String, Object> map = null;
-		
+		/*
+		 * @GetMapping("{boardCode:[0-9]+}") public String selectBoardList(
+		 * 
+		 * @PathVariable("boardCode") int boardCode,
+		 * 
+		 * @RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
+		 * Model model,
+		 * 
+		 * @RequestParam Map<String, Object> paramMap) {
+		 * 
+		 * log.debug("paramMap : {}", paramMap);
+		 * 
+		 * Map<String, Object> map = null;
+		 */
 		// 검색이 아닌 경우 == 일반 목록 조회
 		if(paramMap.get("key") == null) {
 			// 서비스 호출 후 결과 반환 받기
